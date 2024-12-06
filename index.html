@@ -3,10 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Api WhatsApp</title>
+    <title>Envio de Mensagem</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            background-color: #add8e6; 
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        form {
+            display: inline-block;
+            margin-top: 20px;
+        }
+        label, input {
+            display: block;
+            margin: 10px auto;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #003d80;
+        }
+    </style>
 </head>
 <body>
-    <h1>Enviar mensagem - WhatsApp</h1>
+    <h1>Envio de Mensagem</h1>
     <form id="formulario">
         <label for="nome">Nome:</label>
         <input type="text" id="nome"> <br>
@@ -29,8 +61,8 @@
             let telefone = document.getElementById('telefone').value;
             let email = document.getElementById('email').value;
             let stringCompleta = `Nome: ${nome}, e-mail: ${email}, endereço: ${endereco} e telefone: ${telefone}`;
-            window.open(`https://api.whatsapp.com/send?phone=${telefone}&text=${stringCompleta}`);
-        })
+            window.open(`https://api.whatsapp.com/send?phone=${telefone}&text=${encodeURIComponent(stringCompleta)}`);
+        });
     </script>
 </body>
 </html>
